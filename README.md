@@ -1,8 +1,8 @@
 # EventApi
 
-Node: v10.15.3
-Database: SQLite3
-NPM packages: express, body-parser,SQLite3
+Node: v10.15.3 \n
+Database: SQLite3 \n
+NPM packages: express, body-parser, SQLite3\n
 
 ## COMMANDS to run database (data is flattended to perform Search & Delete operations)
 1. Open CMD
