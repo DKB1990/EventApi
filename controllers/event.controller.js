@@ -32,8 +32,8 @@ exports.getActorDetailsByActorLogin = function(req, res) {
 
 exports.findRepositoryWithMaxEvents = function(req, res) {
   let db = new sqlite3.Database('./data/event.db');
-  let sql = `SELECT type, repo_id, repo_name, repo_url, COUNT(type) FROM events where actor_login=?
-  group by type, repo_id, repo_name, repo_url limit 1`;
+  let sql = `SELECT repo_id, repo_name, repo_url, COUNT(type) FROM events where actor_login=?
+  group by repo_id, repo_name, repo_url limit 1`;
   db.each(sql, [req.query.actor_login], (err, row) => {
     if (err) {
       console.log(err);
@@ -56,11 +56,14 @@ exports.listOfRepositories = function(req, res) {
     }
     console.log(row);
   });
+
   db.close();
   res.send();
 };
 
 exports.deleteEvents = function(req, res) {
+  if(req.query.actor_login != undefined && req.query.actor_login != null)
+  {
   let db = new sqlite3.Database('./data/event.db');
   let sql = `DELETE FROM events WHERE actor_login=?`;
   db.run(sql, req.query.actor_login, function(err) {
@@ -72,4 +75,7 @@ exports.deleteEvents = function(req, res) {
 
   db.close();
   res.send('Deleted');
+}
+else
+  res.send('Bad Request')
 };
