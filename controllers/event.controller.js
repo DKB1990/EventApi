@@ -62,20 +62,19 @@ exports.listOfRepositories = function(req, res) {
 };
 
 exports.deleteEvents = function(req, res) {
-  if(req.query.actor_login != undefined && req.query.actor_login != null)
-  {
-  let db = new sqlite3.Database('./data/event.db');
-  let sql = `DELETE FROM events WHERE actor_login=?`;
-  db.run(sql, req.query.actor_login, function(err) {
-    if (err) {
-      return console.error(err.message);
-    }
-    console.log(`Deleted`);
-  });
+    if (req.query.actor_login != undefined && req.query.actor_login != null) {
+        let db = new sqlite3.Database('./data/event.db');
+        let sql = `DELETE FROM events WHERE actor_login=?`;
+        db.run(sql, req.query.actor_login, function (err) {
+            if (err) {
+                return console.error(err.message);
+            }
+            console.log(`Deleted`);
+        });
 
-  db.close();
-  res.send('Deleted');
-}
-else
-  res.send('Bad Request')
+        db.close();
+        res.send('Deleted');
+    }
+    else
+        res.send('Bad Request');
 };
