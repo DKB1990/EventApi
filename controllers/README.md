@@ -5,7 +5,7 @@
 4. Now write in cmd **.read schema.sql**, hit enter
 5. Write 'Select count(*) from events', just to make sure schema is created successfully
 6. Write in cmd **.read data.sql**, hit enter
-7. Write 'Select count(*) from events', it will return some count
+7. Write 'Select count(actor_login) from events', it will return some count
 8. You're done **:)**
 
 # To RUN this project
