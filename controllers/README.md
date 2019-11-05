@@ -1,4 +1,4 @@
-# COMMANDS to run database (data is flattended to give the best performance)
+# COMMANDS to run database (data is flattended to perform Search & Delete operations)
 1. Open CMD
 2. Go to data folder under the main folder
 3. Just write 'Sqlite3' and '.open event.db' (this will connect to event db)
